@@ -1,24 +1,16 @@
-# README
+# pokepoke-rubyruby
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## description
 
-Things you may want to cover:
+## init
 
-* Ruby version
+```bash
+# 初期のbootstrapを導入
+rails dartsass:install
 
-* System dependencies
+# dbの初期設定
+rails db:create db:migrate
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# railsサーバーの起動 *開発時
+rails s
+```
