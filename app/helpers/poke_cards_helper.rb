@@ -1,0 +1,2 @@
+module PokeCardsHelper
+end

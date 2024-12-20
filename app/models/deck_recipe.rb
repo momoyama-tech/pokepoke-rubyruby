@@ -1,0 +1,2 @@
+class DeckRecipe < ApplicationRecord
+end

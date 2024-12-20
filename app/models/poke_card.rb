@@ -1,0 +1,2 @@
+class PokeCard < ApplicationRecord
+end
