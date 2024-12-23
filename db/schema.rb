@@ -27,13 +27,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_023837) do
   end
 
   create_table "poke_cards", force: :cascade do |t|
+    t.string "name"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rates", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "result", limit: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -58,5 +63,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_023837) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "rates", "users"
   add_foreign_key "sessions", "users"
 end

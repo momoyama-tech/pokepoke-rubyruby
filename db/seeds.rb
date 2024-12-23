@@ -8,7 +8,39 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts("add users")
-User.create!(email_address: "foo@example.com", password: "password")
-User.create!(email_address: "bar@example.com", password: "password")
-User.create!(email_address: "baz@example.com", password: "password")
+
+unless User.exists?(email_address: 'foo@example.com')
+  puts("add users")
+  User.create!(email_address: "foo@example.com", password: "password")
+  User.create!(email_address: "bar@example.com", password: "password")
+  User.create!(email_address: "baz@example.com", password: "password")
+end
+
+puts("add cards")
+[ {
+  name: "Card 1",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 2",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 3",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 4",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 5",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 6",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 7",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+}, {
+  name: "Card 8",
+  img_url: 'https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show'
+} ].each do |poke_card|
+  PokeCard.find_or_create_by(poke_card)
+end
