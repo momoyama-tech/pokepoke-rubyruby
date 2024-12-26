@@ -52,10 +52,10 @@ rails s
 | user_poke_card | ユーザーとポケポケカードの中間モデル<br/>ユーザーの所有しているポケポケカードを管理する |
 
 ## commands
-| コマンド               | 説明                     |
+| コマンド | 説明 |
 |------------------------|--------------------------|
-| `rails dartsass:install` | 初期のbootstrapを導入     |
-| `rails db:create db:migrate` | dbの初期設定             |
-| `rails db:seed`        | データベースのシード      |
-| `rails db:migrate:reset db:seed`              | データベースを削除して再度作成 |
-| `rails s`              | railsサーバーの起動 *開発時 |
+| `rails dartsass:install` | 初期のbootstrapを導入 |
+| `rails db:create db:migrate` | dbの初期設定 |
+| `rails db:seed` | データベースのシード |
+| `rails db:migrate:reset db:seed`| データベースを削除して再度作成 |
+| `rails s` | railsサーバーの起動 *開発時 |

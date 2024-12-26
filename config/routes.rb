@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :rates
   resources :poke_cards
   resources :decks
+  resources :deck_recipes
 end
