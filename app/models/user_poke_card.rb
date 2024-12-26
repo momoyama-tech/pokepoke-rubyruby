@@ -1,2 +1,0 @@
-class UserPokeCard < ApplicationRecord
-end
