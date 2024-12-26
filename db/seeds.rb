@@ -69,7 +69,6 @@ puts("add deck recipes")
 end
 
 puts("add match results")
-puts("add deck recipes")
 100.times do
   user, target_user = User.all.sample(3)
   match_result = MatchResult.create!(
@@ -81,3 +80,7 @@ puts("add deck recipes")
   k = 20
   user.update(rate_point: user.rate_point + k * (match_result.result - ea))
 end
+
+puts("add rooms")
+binding.b
+User.first.rooms.create!(name: "Room 1")

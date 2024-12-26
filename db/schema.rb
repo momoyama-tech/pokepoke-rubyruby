@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_26_141730) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_26_153244) do
   create_table "deck_recipes", force: :cascade do |t|
     t.integer "user_id"
     t.string "name", null: false
@@ -63,6 +63,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_141730) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "target_user_id"
+    t.string "name"
+    t.integer "status", limit: 1, default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_user_id"], name: "index_rooms_on_target_user_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -99,6 +110,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_141730) do
   add_foreign_key "decks_poke_cards", "poke_cards"
   add_foreign_key "match_results", "users"
   add_foreign_key "match_results", "users", column: "target_user_id"
+  add_foreign_key "rooms", "users"
+  add_foreign_key "rooms", "users", column: "target_user_id"
   add_foreign_key "sessions", "users"
   add_foreign_key "users_poke_cards", "poke_cards"
   add_foreign_key "users_poke_cards", "users"
