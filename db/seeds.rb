@@ -67,3 +67,17 @@ puts("add deck recipes")
 } ].each do |deck_recipe|
   DeckRecipe.find_or_create_by(deck_recipe)
 end
+
+puts("add match results")
+puts("add deck recipes")
+100.times do
+  user, target_user = User.all.sample(3)
+  match_result = MatchResult.create!(
+    user_id: user.id,
+    target_user_id: target_user.id,
+    result: [ 0, 5, 10 ].sample
+  )
+  ea = 1 / (1 + 10 ** ((target_user.rate_point - user.rate_point) / 400))
+  k = 20
+  user.update(rate_point: user.rate_point + k * (match_result.result - ea))
+end
