@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_27_020611) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_27_030246) do
   create_table "deck_recipes", force: :cascade do |t|
     t.integer "user_id"
     t.string "name", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_27_020611) do
     t.datetime "updated_at", null: false
     t.integer "hp"
     t.string "evolution_level"
-    t.string "type"
+    t.string "pokemon_type"
     t.string "weakness"
     t.string "basic_evolution"
     t.string "first_evolution"
