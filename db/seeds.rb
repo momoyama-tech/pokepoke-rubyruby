@@ -68,6 +68,13 @@ puts("add deck recipes")
   DeckRecipe.find_or_create_by(deck_recipe)
 end
 
+puts("add deck recipes_poke_cards")
+DeckRecipe.all.each do |deck_recipe|
+  PokeCard.all.sample(20).each do |poke_card|
+    DeckRecipesPokeCard.find_or_create_by(deck_recipe_id: deck_recipe.id, poke_card_id: poke_card.id)
+  end
+end
+
 puts("add match results")
 100.times do
   user, target_user = User.all.sample(3)
@@ -80,7 +87,3 @@ puts("add match results")
   k = 20
   user.update(rate_point: user.rate_point + k * (match_result.result - ea))
 end
-
-puts("add rooms")
-binding.b
-User.first.rooms.create!(name: "Room 1")
