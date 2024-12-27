@@ -18,16 +18,13 @@ namespace :poke_card do
     p json
     db_data = json[0]["db_data"]
     puts db_data
-    card_urls = []
+    card_data = Array.new(2) { }
     for data in db_data
-      url = data["image_url"]
-      card_urls.push(url)
+      card_data.push([ data["title"], data["image_url"] ])
     end
-    puts "card_urls: #{card_urls}"
-    puts "card_urls.length: #{card_urls.length}"
-    for i in 0..card_urls.length-1
-      puts "card_urls[#{i}]: #{card_urls[i]}"
-    end
+    card_data.compact!
+    puts "card_data: #{card_data}"
+    puts "card_data.length: #{card_data.length}"
     binding.b
   end
 end
