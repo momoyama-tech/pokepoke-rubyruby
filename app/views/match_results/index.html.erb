@@ -23,62 +23,20 @@
       <th scope="col" style="width: 25%;">デッキ</th>
     </tr>
   </thead>
-    <% @match_results.to_a.each_slice(3) do |match_results_row| %>
-    <tbody>
-       <%= match_result. %>
-      <tr>
-          <tr>
-              <th scope="row">  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault"> <%= match_result.id %></label>
-                </div>
-          </th>
-         
-          <td><%= match_result.name %></td>
-          <td><%= match_result.win %></td>
-          <td><%= match_result.deki%>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                使用デッキ
-                </button>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to 'Action', '#', class: 'dropdown-item' %></li>
-                    <li><%= link_to 'Another action', '#', class: 'dropdown-item' %></li>
-                    <li><%= link_to 'Something else here', '#', class: 'dropdown-item' %></li>
-                  </ul>
-                </div>
-                <%= match_result.some_attribute %>
-              </td>
-            </tr>
-          </tbody>
-          <% end %>
-        </table>
-        
-          <tbody>   
-            <tr>
-              <th scope="row">  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">1</label>
-                </div>
-            </th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-                </button>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to 'Action', '#', class: 'dropdown-item' %></li>
-                    <li><%= link_to 'Another action', '#', class: 'dropdown-item' %></li>
-                    <li><%= link_to 'Something else here', '#', class: 'dropdown-item' %></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </tbody>
-    </table>
+  <% @match_results.each do |match_result| %>
+  <tbody>
+      <%= match_result.id %>
+    <tr>
+      <th scope="row">  
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault"> <%= match_result.id %></label>
+        </div>
+      </th>
+    
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
