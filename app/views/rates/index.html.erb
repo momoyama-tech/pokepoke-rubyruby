@@ -23,9 +23,9 @@
       <th scope="col" style="width: 25%;">デッキ</th>
     </tr>
   </thead>
-    <% @match_results.to_a.each_slice(3) do |match_results_row| %>
+    <% @match_results do |match_results_row| %>
     <tbody>
-       <%= match_result. %>
+       <%= match_results_row.id %>
       <tr>
           <tr>
               <th scope="row">  
