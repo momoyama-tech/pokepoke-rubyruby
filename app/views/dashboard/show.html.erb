@@ -1,2 +1,113 @@
-dashboard
-<button type="button" class="btn btn-primary">Secondary</button>
+<div class="container-fluid mt-4">
+    <h1 class="mb-4">ダッシュボード</h1>
+    <div class="row justify-content-center">
+        <!-- メインコンテンツ -->
+        <div class="col-md-9">
+
+        <!-- フィルタリングオプション -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+            <%= form_with(url: dashboard_path, method: :get, local: true) do |form| %>
+                <%= form.select :period, options_for_select([['Choose Period', nil], ['Last 7 Days', '7'], ['Last 30 Days', '30'], ['Last 6 Months', '6m'], ['Last Year', '1y']]), { selected: params[:period] }, { class: 'form-control' } %>
+            <% end %>
+            </div>
+            <div class="col-md-4">
+            <%= form_with(url: dashboard_path, method: :get, local: true) do |form| %>
+                <%= form.select :metric, options_for_select([['Choose Metric', nil], ['Sales', 'sales'], ['Revenue', 'revenue'], ['Users', 'users']]), { selected: params[:metric] }, { class: 'form-control' } %>
+            <% end %>
+            </div>
+        </div>
+
+        <!-- グラフ -->
+        <div class="card mb-4">
+            <div class="card-header">
+            <h5 class="card-title">Sales Overview</h5>
+            </div>
+            <div class="card-body">
+            <canvas id="salesChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 分析結果テーブル -->
+        <div class="card mb-4">
+            <div class="card-header">
+            <h5 class="card-title">Top Performing Products</h5>
+            </div>
+            <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Sales</th>
+                    <th>Revenue</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Product A</td>
+                    <td>1,234</td>
+                    <td>$12,340</td>
+                </tr>
+                <tr>
+                    <td>Product B</td>
+                    <td>987</td>
+                    <td>$9,870</td>
+                </tr>
+                <tr>
+                    <td>Product C</td>
+                    <td>567</td>
+                    <td>$5,670</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- 最近のアクティビティ -->
+        <div class="card">
+            <div class="card-header">
+            <h5 class="card-title">Recent Activity</h5>
+            </div>
+            <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">User X added a new product</li>
+                <li class="list-group-item">User Y made a purchase</li>
+                <li class="list-group-item">User Z requested a refund</li>
+            </ul>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js -->
+<%= javascript_include_tag 'https://code.jquery.com/jquery-3.5.1.slim.min.js' %>
+<%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js' %>
+<%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js' %>
+
+<!-- Chart.js Script -->
+<script>
+var ctx = document.getElementById('salesChart').getContext('2d');
+var salesChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [{
+        label: 'Sales ($)',
+        data: [12000, 15000, 17000, 16000, 18000, 20000],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+        fill: false
+    }]
+    },
+    options: {
+    responsive: true,
+    scales: {
+        y: {
+        beginAtZero: true
+        }
+    }
+    }
+});
+</script>
