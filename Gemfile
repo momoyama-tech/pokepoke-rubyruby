@@ -44,6 +44,7 @@ gem "dartsass-rails"
 gem "bootstrap", "~> 5.3.3"
 gem "capybara"
 gem "selenium-webdriver"
+gem "nokogiri"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
