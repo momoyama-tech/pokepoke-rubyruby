@@ -1,55 +1,32 @@
-deck recipes
+<h2>
+  <p style="background-color:#9900ff">
+  デッキレシピ
+</h2>
+
 <div class="container text-center">
-  <div class="row">
-    <div class="col">
-      <div class="card w-25">
-        <img src="https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+  <% @deck_recipes.to_a.push(nil).each_slice(3) do |row| %>
+    <div class="row justify-content-evenly mt-3">
+      <% row.each do |recipe| %>
+        <div class="card w-25 ">
+          <% if recipe.nil? %>
+            <div class="card-body d-flex align-items-center justify-content-center">
+              <a href="/deck_recipes/new" class="btn btn-primary">+</a>
+            </div>
+          <% else %>
+            <img src="https://s3-alpha-sig.figma.com/img/7437/6e0d/656fd9ef6dd41904045973b879227403?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iBRKnHz307XV8nuWi~AFFvP9G6i1TkpyL10lApkYSO4bS~Amu4DH3EgrIaBtzQAD9yyqd25E10jABdSzPUqHCcvfOC8MZbJzsFRTlMYVb1agrtrf7XcbLchCqOVb4t5gLs5Qkkf4H0vM6ctWHsVE6~PxPLmTWOub7i5dElEBdraIZem~LNTGUbhhjsbO1FtTokiNb8yLJixxoi1dUmfddX3tC7Ox2VK4TWvIU5SGhMqQPdrbnI-P8MDF9bdzWQDrvsEftRnBTPFUzBQ2aqtkHbu2NYVtMt0RtEJyEm5EAnB3AGBq~wDzqlYN8w1EjAB4Tu7T62cnvaP3B3TKo8cY1Q__" class="card-img-top" alt="...">
+            <h5 class="card-title"><%= recipe.name %></h5>
+            <p class="card-text">パワフルブルーム</p>
+            <p>このポケモンのエネルギーの数ぶんコインを投げ、オモテの数×50ダメージ。</p>
+            <div class="column">
+              <%= link_to "詳細", recipe, class: "btn btn-primary" %>
+              <%= link_to "削除", recipe,
+                method: :delete,
+                data: {turbo_confirm: "本当に削除しますか？", turbo_method: :delete},
+                class: "btn btn-danger" %>
+          </div>
+        <% end %>
         </div>
-      </div>
+      <% end %>
     </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://img.game8.jp/10818521/90e368c73c2b107dcd48d2d68ff5d7a1.png/show" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://img.game8.jp/10821293/30d06a39169e84095ffca268759ffc5f.png/show" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://img.game8.jp/10821293/30d06a39169e84095ffca268759ffc5f.png/show" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://img.game8.jp/10821293/30d06a39169e84095ffca268759ffc5f.png/show" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>

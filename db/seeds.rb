@@ -67,3 +67,23 @@ puts("add deck recipes")
 } ].each do |deck_recipe|
   DeckRecipe.find_or_create_by(deck_recipe)
 end
+
+puts("add deck recipes_poke_cards")
+DeckRecipe.all.each do |deck_recipe|
+  PokeCard.all.sample(20).each do |poke_card|
+    DeckRecipesPokeCard.find_or_create_by(deck_recipe_id: deck_recipe.id, poke_card_id: poke_card.id)
+  end
+end
+
+puts("add match results")
+100.times do
+  user, target_user = User.all.sample(3)
+  match_result = MatchResult.create!(
+    user_id: user.id,
+    target_user_id: target_user.id,
+    result: [ 0, 5, 10 ].sample
+  )
+  ea = 1 / (1 + 10 ** ((target_user.rate_point - user.rate_point) / 400))
+  k = 20
+  user.update(rate_point: user.rate_point + k * (match_result.result - ea))
+end

@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :poke_cards
   resources :decks
   resources :deck_recipes
+  resources :match_results
 end

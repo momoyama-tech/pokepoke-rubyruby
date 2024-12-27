@@ -1,0 +1,2 @@
+class DecksPokeCard < ApplicationRecord
+end
